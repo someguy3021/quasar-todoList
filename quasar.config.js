@@ -221,23 +221,3 @@ module.exports = configure(function (ctx) {
     }
   }
 });
-
-return {
-  framework: {
-    config: {
-      brand: {
-        primary: '#1976d2',
-        secondary: '#5761bd',
-        accent: '#9C27B0',
-
-        dark: '#1d1d1d',
-        'dark-page': '#121212',
-
-        positive: '#21BA45',
-        negative: '#c24251',
-        info: '#67d5eb',
-        warning: '#e8dd7b'
-      }
-    }
-  }
-}
