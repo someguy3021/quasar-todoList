@@ -13,25 +13,65 @@
       </q-toolbar>
       <div class="q-px-lg q-pt-xl q-mb-md">
         <div class="text-h3">My TodoList</div>
-        <div class="text-subtitle">{{ todaysDate }}</div>
+        <div class="text-subtitle">{{ formattedString }}</div>
       </div>
       <q-img class="header-image absolute-top" src="../assets/tvman1500.png" />
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
+    <q-drawer
+        v-model="leftDrawerOpen"
+        show-if-above
+        :width="250"
+        :breakpoint="600"
+      >
+        <q-scroll-area style="height: calc(100% - 185px); margin-top: 185px; border-right: 1px solid #ddd">
+          <q-list padding>
 
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+            <q-item to="/" exact clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="list" />
+              </q-item-section>
+              <q-item-section>
+                Todo
+              </q-item-section>
+            </q-item>
+
+            <q-item to="/help" exact clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="help" />
+              </q-item-section>
+              <q-item-section>
+                Help
+              </q-item-section>
+            </q-item>
+
+            <q-item to="/about" exact clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="link" />
+              </q-item-section>
+              <q-item-section>
+                About
+              </q-item-section>
+            </q-item>
+
+          </q-list>
+        </q-scroll-area>
+
+        <q-img class="absolute-top bg-primary" style="height: 185px">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="../assets/tvman1500.png">
+            </q-avatar>
+            <div class="text-weight-bold">Name</div>
+            <div>@hello</div>
+          </div>
+        </q-img>
+      </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </q-page-container>
   </q-layout>
 </template>
@@ -66,13 +106,8 @@ function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 };
 
-function todaysDate() {
-  const timeStamp = Date.now();
-  return date.formatDate(
-    timeStamp,
-    "YYYY-MM-DDTHH:mm:ss.SSSZ"
-  )
-};
+const timeStamp = Date.now()
+const formattedString = date.formatDate(timeStamp, 'dddd D MMMM')
 </script>
 
 
