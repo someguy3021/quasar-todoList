@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center q-pa-lg">
+  <q-page class="q-pa-lg">
     <h5>Help</h5>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, delectus
